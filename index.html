@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+	<div>
+		Enter secredcode here:
+		<input type="text" name="secredCode" value="">
+	</div>
+	<div class="message"></div>
+<script>
+const pressed = [];
+const secretCode = 'maria';
+
+document.addEventListener('keyup', (e) => {
+	pressed.push(e.key);
+
+	pressed.splice(-secretCode.length - 1, pressed.length-secretCode.length); // удаляем начало массива, тк - стоит
+
+    const message = document.querySelector('.message');
+    if(pressed.join('').includes(secretCode)){
+   		message.innerHTML = '<div>Yes:) Secredcode is "maria"</div>';
+    } else{
+		message.innerHTML = '<div>No! It is nor right secretcode:(</div>';
+    }
+})
+</script>
+</body>
+</html>
